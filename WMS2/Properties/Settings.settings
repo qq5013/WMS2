@@ -1,0 +1,66 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WMS.MainApplication.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WmsDbConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=10.0.0.220;Initial Catalog=WMS;Persist Security Info=True;User ID=sa;Password=istm1973&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=10.0.0.220;Initial Catalog=WMS;Persist Security Info=True;User ID=sa;Password=istm1973</Value>
+    </Setting>
+    <Setting Name="OnixDbConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=10.0.0.220;Initial Catalog=onix;Persist Security Info=True;User ID=sa;Password=istm1973&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=10.0.0.220;Initial Catalog=onix;Persist Security Info=True;User ID=sa;Password=istm1973</Value>
+    </Setting>
+    <Setting Name="SymphonyDbConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=10.0.0.211;Initial Catalog=BECOR;Persist Security Info=True;User ID=sa;Password=Isbaltic123!@#&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=10.0.0.211;Initial Catalog=BECOR;Persist Security Info=True;User ID=sa;Password=Isbaltic123!@#</Value>
+    </Setting>
+    <Setting Name="WMSConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=SYMPHONY2;Initial Catalog=WMS;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=SYMPHONY2;Initial Catalog=WMS;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="LabelPrinterAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\10.0.0.6\tsct</Value>
+    </Setting>
+    <Setting Name="LabelPrinterOutputFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\LabelPrint\tsc\_lbl2.txt</Value>
+    </Setting>
+    <Setting Name="LabelPrinterParamType" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FR"EXAMPLE"</Value>
+    </Setting>
+    <Setting Name="LabelPrinterHeadName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Elody-Farm</Value>
+    </Setting>
+    <Setting Name="LabelPrinterHeadPhone" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">40-62-90</Value>
+    </Setting>
+    <Setting Name="CommandTimeOut" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="ClientType" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MobileClient</Value>
+    </Setting>
+    <Setting Name="PathForPrintForms" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PrintForms</Value>
+    </Setting>
+    <Setting Name="IntervalCheckSession" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="AutoDebitRests" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

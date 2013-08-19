@@ -1,0 +1,22 @@
+rename DB test to DB onix
+
+SP
+
+[GetDirSellGoods]
+[FillAssamblyList]
+[GetDirLabGoods]
+[GetDirSellGoods]
+[GetLaboratoryPartsFromSystem]
+[GetSellPartsFromSystem]
+
+
+FUNCTIONS
+
+[GetListSbor]
+
+
+
+
+
+
+[GetGeneralDataForAssamblyList]

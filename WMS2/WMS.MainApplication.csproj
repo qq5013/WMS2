@@ -1,0 +1,984 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{840A0630-05A6-47D9-A5FB-3779CADF39CC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WMS.MainApplication</RootNamespace>
+    <AssemblyName>WMS</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>\\srv8\work\sersoft\WMS.Update\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\srv8\work\sersoft\WMS.Update\</InstallUrl>
+    <UpdateUrl>\\srv8\work\sersoft\WMS.Update\</UpdateUrl>
+    <ProductName>Becor WMS System</ProductName>
+    <PublisherName>Romanciuc Serghei</PublisherName>
+    <CreateWebPageOnPublish>false</CreateWebPageOnPublish>
+    <WebPage>install.html</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B1BF735D254A3857995616C1BA721771749E7F57</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WMS.MainApplication_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AlienAqua FTP.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WMS.MainApplication.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>WMS.MainApplication_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.OfficeSkins.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v11.1.UI, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="log4net">
+      <HintPath>.\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DirAddEditGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditGroup.Designer.cs">
+      <DependentUpon>DirAddEditGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditItem.Designer.cs">
+      <DependentUpon>DirAddEditItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditItem2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditItem2.Designer.cs">
+      <DependentUpon>DirAddEditItem2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditProducts.Designer.cs">
+      <DependentUpon>DirAddEditProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditResponsibleForZone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditResponsibleForZone.Designer.cs">
+      <DependentUpon>DirAddEditResponsibleForZone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditRests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditRests.Designer.cs">
+      <DependentUpon>DirAddEditRests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditRotation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditRotation.Designer.cs">
+      <DependentUpon>DirAddEditRotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditStreet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditStreet.Designer.cs">
+      <DependentUpon>DirAddEditStreet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditUnit.Designer.cs">
+      <DependentUpon>DirAddEditUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditWarehouse.Designer.cs">
+      <DependentUpon>DirAddEditWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirAddEditZone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirAddEditZone.Designer.cs">
+      <DependentUpon>DirAddEditZone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entitys.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdate.Designer.cs">
+      <DependentUpon>FrmUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Glavnaia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Glavnaia.Designer.cs">
+      <DependentUpon>Glavnaia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirMainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirMainFrm.Designer.cs">
+      <DependentUpon>DirMainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MdiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdiMain.Designer.cs">
+      <DependentUpon>MdiMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MobFrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MobFrmLogin.Designer.cs">
+      <DependentUpon>MobFrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MobFrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MobFrmMain.Designer.cs">
+      <DependentUpon>MobFrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MobMdiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MobMdiMain.Designer.cs">
+      <DependentUpon>MobMdiMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="WMSDataSet.cs">
+      <DependentUpon>WMSDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WMSDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMSDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DirAddEditGroup.resx">
+      <DependentUpon>DirAddEditGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditItem.resx">
+      <DependentUpon>DirAddEditItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditItem2.resx">
+      <DependentUpon>DirAddEditItem2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditProducts.resx">
+      <DependentUpon>DirAddEditProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditResponsibleForZone.resx">
+      <DependentUpon>DirAddEditResponsibleForZone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditRests.resx">
+      <DependentUpon>DirAddEditRests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditRotation.resx">
+      <DependentUpon>DirAddEditRotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditStreet.resx">
+      <DependentUpon>DirAddEditStreet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditUnit.resx">
+      <DependentUpon>DirAddEditUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditWarehouse.resx">
+      <DependentUpon>DirAddEditWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirAddEditZone.resx">
+      <DependentUpon>DirAddEditZone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdate.resx">
+      <DependentUpon>FrmUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Glavnaia.resx">
+      <DependentUpon>Glavnaia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirMainFrm.resx">
+      <DependentUpon>DirMainFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MdiMain.resx">
+      <DependentUpon>MdiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MobFrmLogin.resx">
+      <DependentUpon>MobFrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MobFrmMain.resx">
+      <DependentUpon>MobFrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MobMdiMain.resx">
+      <DependentUpon>MobMdiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Client.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PrintForms\PrintLabelsForm.repx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="PrintForms\ReplenishmentList.repx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PrintForms\Sbor.repx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="WMS.MainApplication_TemporaryKey.pfx" />
+    <None Include="WMSDataSet.xsc">
+      <DependentUpon>WMSDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WMSDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WMSDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WMSDataSet.xss">
+      <DependentUpon>WMSDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AlienAqua FTP.ico" />
+    <Content Include="allDev\DevExpress.BonusSkins.v11.1.dll" />
+    <Content Include="allDev\DevExpress.Build.XamlResourceProcessing.v11.1.dll" />
+    <Content Include="allDev\DevExpress.Charts.v11.1.Core.dll" />
+    <Content Include="allDev\DevExpress.CodeParser.v11.1.dll" />
+    <Content Include="allDev\DevExpress.Data.v11.1.Compact.dll" />
+    <Content Include="allDev\DevExpress.Data.v11.1.dll" />
+    <Content Include="allDev\DevExpress.Data.v11.1.Linq.dll" />
+    <Content Include="allDev\DevExpress.Data.v11.1.Linq.xml" />
+    <Content Include="allDev\DevExpress.Data.v11.1.resources.dll" />
+    <Content Include="allDev\DevExpress.Data.v11.1.xml" />
+    <Content Include="allDev\DevExpress.DemoData.v11.1.dll" />
+    <Content Include="allDev\DevExpress.DemoReports.v11.1.dll" />
+    <Content Include="allDev\DevExpress.Design.v11.1.dll" />
+    <Content Include="allDev\DevExpress.OfficeSkins.v11.1.dll" />
+    <Content Include="allDev\DevExpress.PivotGrid.v11.1.Adomd.dll" />
+    <Content Include="allDev\DevExpress.PivotGrid.v11.1.Adomd.xml" />
+    <Content Include="allDev\DevExpress.PivotGrid.v11.1.Core.dll" />
+    <Content Include="allDev\DevExpress.PivotGrid.v11.1.Core.xml" />
+    <Content Include="allDev\DevExpress.Printing.v11.1.Core.dll" />
+    <Content Include="allDev\DevExpress.Projects.v11.1.Installers.dll" />
+    <Content Include="allDev\DevExpress.Reports.v11.1.Designer.dll" />
+    <Content Include="allDev\DevExpress.RichEdit.v11.1.Core.dll" />
+    <Content Include="allDev\DevExpress.RichEdit.v11.1.Core.xml" />
+    <Content Include="allDev\DevExpress.SharePoint.2010.v11.1.dll" />
+    <Content Include="allDev\DevExpress.SharePoint.MOSS.v11.1.dll" />
+    <Content Include="allDev\DevExpress.SharePoint.WSS.v11.1.dll" />
+    <Content Include="allDev\DevExpress.SpellChecker.v11.1.Core.dll" />
+    <Content Include="allDev\DevExpress.SpellChecker.v11.1.Core.xml" />
+    <Content Include="allDev\DevExpress.Tutorials.v11.1.dll" />
+    <Content Include="allDev\DevExpress.Utils.v11.1.dll" />
+    <Content Include="allDev\DevExpress.Utils.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraBars.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraBars.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraBars.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraCharts.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraCharts.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraCharts.v11.1.Extensions.dll" />
+    <Content Include="allDev\DevExpress.XtraCharts.v11.1.UI.dll" />
+    <Content Include="allDev\DevExpress.XtraCharts.v11.1.UI.xml" />
+    <Content Include="allDev\DevExpress.XtraCharts.v11.1.Web.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraCharts.v11.1.Web.dll" />
+    <Content Include="allDev\DevExpress.XtraCharts.v11.1.Web.xml" />
+    <Content Include="allDev\DevExpress.XtraCharts.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraEditors.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraEditors.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraEditors.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraGauges.v11.1.Core.dll" />
+    <Content Include="allDev\DevExpress.XtraGauges.v11.1.Core.xml" />
+    <Content Include="allDev\DevExpress.XtraGauges.v11.1.Design.Win.dll" />
+    <Content Include="allDev\DevExpress.XtraGauges.v11.1.Presets.dll" />
+    <Content Include="allDev\DevExpress.XtraGauges.v11.1.Win.dll" />
+    <Content Include="allDev\DevExpress.XtraGauges.v11.1.Win.xml" />
+    <Content Include="allDev\DevExpress.XtraGrid.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraGrid.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraGrid.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraLayout.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraLayout.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraLayout.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraNavBar.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraNavBar.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraNavBar.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraPivotGrid.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraPivotGrid.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraPivotGrid.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraPrinting.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraPrinting.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraPrinting.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraReports.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraReports.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraReports.v11.1.Extensions.dll" />
+    <Content Include="allDev\DevExpress.XtraReports.v11.1.Extensions.xml" />
+    <Content Include="allDev\DevExpress.XtraReports.v11.1.Service.dll" />
+    <Content Include="allDev\DevExpress.XtraReports.v11.1.Service.xml" />
+    <Content Include="allDev\DevExpress.XtraReports.v11.1.Web.dll" />
+    <Content Include="allDev\DevExpress.XtraReports.v11.1.Web.xml" />
+    <Content Include="allDev\DevExpress.XtraReports.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraRichEdit.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraRichEdit.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraRichEdit.v11.1.Extensions.dll" />
+    <Content Include="allDev\DevExpress.XtraRichEdit.v11.1.Printing.dll" />
+    <Content Include="allDev\DevExpress.XtraRichEdit.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.Core.dll" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.Core.xml" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.Extensions.dll" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.Extensions.xml" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.iCalendarExchange.dll" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.iCalendarExchange.xml" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.OutlookExchange.dll" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.Reporting.dll" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.Reporting.Extensions.dll" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.Reporting.Extensions.xml" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.Reporting.xml" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.VCalendarExchange.dll" />
+    <Content Include="allDev\DevExpress.XtraScheduler.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraSpellChecker.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraSpellChecker.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraSpellChecker.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraTreeList.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraTreeList.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraTreeList.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraVerticalGrid.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraVerticalGrid.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraVerticalGrid.v11.1.xml" />
+    <Content Include="allDev\DevExpress.XtraWizard.v11.1.Design.dll" />
+    <Content Include="allDev\DevExpress.XtraWizard.v11.1.dll" />
+    <Content Include="allDev\DevExpress.XtraWizard.v11.1.xml" />
+    <Content Include="Layouts\StreetLayout.xml" />
+    <Content Include="Layouts\WarehouseLayout.xml" />
+    <Content Include="ru\DevExpress.Data.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.AuditTrail.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Chart.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.CloneObject.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.ConditionalEditorState.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Demos.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.FileAttachment.Web.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.FileAttachment.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.HtmlPropertyEditor.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Kpi.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Objects.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.PivotChart.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.PivotChart.Web.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.PivotChart.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.PivotGrid.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Printing.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Reports.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Reports.Web.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Reports.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Scheduler.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Scheduler.Web.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Scheduler.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.ScriptRecorder.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.ScriptRecorder.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Security.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.StateMachine.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Validation.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Validation.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.ViewVariantsModule.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Web.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Workflow.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.ExpressApp.Workflow.Win.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.PivotGrid.v11.1.Core.resources.dll" />
+    <Content Include="ru\DevExpress.RichEdit.v11.1.Core.resources.dll" />
+    <Content Include="ru\DevExpress.Utils.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.Charts.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.Core.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.Docking.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.Gauges.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.Grid.v11.1.Core.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.LayoutControl.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.NavBar.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.Printing.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.Ribbon.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.RichEdit.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpf.Scheduler.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.Xpo.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraBars.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraCharts.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraEditors.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraGauges.v11.1.Core.resources.dll" />
+    <Content Include="ru\DevExpress.XtraGauges.v11.1.Presets.resources.dll" />
+    <Content Include="ru\DevExpress.XtraGrid.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraLayout.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraNavBar.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraPivotGrid.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraPrinting.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraReports.v11.1.Extensions.resources.dll" />
+    <Content Include="ru\DevExpress.XtraReports.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraRichEdit.v11.1.Extensions.resources.dll" />
+    <Content Include="ru\DevExpress.XtraRichEdit.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraScheduler.v11.1.Core.resources.dll" />
+    <Content Include="ru\DevExpress.XtraScheduler.v11.1.Extensions.resources.dll" />
+    <Content Include="ru\DevExpress.XtraScheduler.v11.1.Reporting.resources.dll" />
+    <Content Include="ru\DevExpress.XtraScheduler.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraSpellChecker.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraTreeList.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraVerticalGrid.v11.1.resources.dll" />
+    <Content Include="ru\DevExpress.XtraWizard.v11.1.resources.dll" />
+    <None Include="Resources\WMS_Login.jpg" />
+    <None Include="Resources\WmsLogo.jpg" />
+    <None Include="Resources\Remove %28Delete%2964.png" />
+    <None Include="Resources\Edit64.png" />
+    <None Include="Resources\Add64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="AlienAqua FTP.ico">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.BonusSkins.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Charts.v11.1.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Data.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.OfficeSkins.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.PivotGrid.v11.1.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Printing.v11.1.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.RichEdit.v11.1.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Utils.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraBars.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraCharts.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraCharts.v11.1.UI">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraEditors.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraGrid.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraLayout.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraNavBar.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraPivotGrid.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraReports.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraRichEdit.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraTreeList.v11.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Layouts\StreetLayout.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Layouts\WarehouseLayout.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="log4net">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="TestMobile">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.AddressAsignment">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.AddressMigration">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.AddressReplenishment">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.Administration">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.Assembly">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.CalcRotation">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.CreateAddress">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.DataBaseLayers">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.Globals">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.MenuBuilder">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="WMS.PrintLabels">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WMS.AddressAsignment\WMS.AddressAsignment.csproj">
+      <Project>{58FE2D83-DA7D-4171-AAE7-C9B2663E4122}</Project>
+      <Name>WMS.AddressAsignment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.AddressesInventory\WMS.AddressesInventory.csproj">
+      <Project>{5884913F-70E0-427B-AFE8-BE36A40890DE}</Project>
+      <Name>WMS.AddressesInventory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.AddressMigration\WMS.AddressMigration.csproj">
+      <Project>{15E9DB46-80CC-4AA6-8D7C-A879576B6F5B}</Project>
+      <Name>WMS.AddressMigration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.AddressReplenishment\WMS.AddressReplenishment.csproj">
+      <Project>{E86B8825-2125-4F7F-ADD4-8F09FD778C9F}</Project>
+      <Name>WMS.AddressReplenishment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.Administration\WMS.Administration.csproj">
+      <Project>{E459295E-F0EF-4FD1-8CD8-1358C0CD63A3}</Project>
+      <Name>WMS.Administration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.Assembly\WMS.Assembly.csproj">
+      <Project>{8266F11A-2573-4CE6-B8AE-ABF48BC16F8D}</Project>
+      <Name>WMS.Assembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.CalcRotation\WMS.CalcRotation.csproj">
+      <Project>{31BED28A-288F-47C3-B7C1-77F7A39D380F}</Project>
+      <Name>WMS.CalcRotation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.CheckAddress\WMS.CheckAddress.csproj">
+      <Project>{BCEB46CD-CEB0-4DD3-88FE-A1F4FC301D71}</Project>
+      <Name>WMS.CheckAddress</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.CreateAddress\WMS.CreateAddress.csproj">
+      <Project>{6713535C-FD11-4798-B352-51F737B6CF22}</Project>
+      <Name>WMS.CreateAddress</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.DataBaseLayers\WMS.DataBaseLayers.csproj">
+      <Project>{A06A378B-F9DD-424D-8478-06EC6D9E2FD0}</Project>
+      <Name>WMS.DataBaseLayers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.Globals\WMS.Globals.csproj">
+      <Project>{0236057E-CEF7-4169-B5D5-FDC6B7B66656}</Project>
+      <Name>WMS.Globals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.MenuBuilder\WMS.MenuBuilder.csproj">
+      <Project>{B5C821D8-6A2C-4F1E-8C58-B2FDCB476D18}</Project>
+      <Name>WMS.MenuBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.PrintLabels\WMS.PrintLabels.csproj">
+      <Project>{1045AAB1-D075-4842-94E5-45F5594EED31}</Project>
+      <Name>WMS.PrintLabels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.ReferenceAddressWithCells\WMS.ReferenceAddressWithCells.csproj">
+      <Project>{48389DD3-2884-48EE-8DDF-E498493E8860}</Project>
+      <Name>WMS.ReferenceAddressWithCells</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

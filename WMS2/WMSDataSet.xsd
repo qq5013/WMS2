@@ -1,0 +1,1188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WMSDataSet" targetNamespace="http://tempuri.org/WMSDataSet.xsd" xmlns:mstns="http://tempuri.org/WMSDataSet.xsd" xmlns="http://tempuri.org/WMSDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="WmsDbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="WmsDbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WMS.MainApplication.Properties.Settings.GlobalReference.Default.WmsDbConnectionString" Provider="System.Data.SqlClient" />
+          <Connection ConnectionStringObject="Data Source=10.0.0.211;Initial Catalog=WMS;Persist Security Info=True;User ID=WMS;Password=WMS" IsAppSettingsProperty="false" Modifier="Assembly" Name="symphony2.WMS.dbo1" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="WMSConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="WMSConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WMS.MainApplication.Properties.Settings.GlobalReference.Default.WMSConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_ProductsTableAdapter" GeneratorDataComponentClassName="Catalog_ProductsTableAdapter" Name="Catalog_Products" UserDataComponentName="Catalog_ProductsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT cp.ID,
+       cp.Description,
+       cp.BarCode,
+       cp.DimensionX,
+       cp.DimensionY,
+       cp.DimensionZ,
+       cp.Weight,
+       cp.Multiplicity,
+       CASE 
+            WHEN (
+                     SELECT COUNT(cg.NameGroup)
+                     FROM   Reference_GroupsWithProducts rgwp                           
+                            INNER JOIN Catalog_Groups cg
+                                 ON  cg.ID = rgwp.GroupID
+                     WHERE  rgwp.ProductID = cp.ID
+                 ) &lt;= 1 THEN (
+                     SELECT cg.NameGroup
+                     FROM   Reference_GroupsWithProducts rgwp                                 
+                            INNER JOIN Catalog_Groups cg
+                                 ON  cg.ID = rgwp.GroupID
+                     WHERE  rgwp.ProductID = cp.ID
+                 )
+            ELSE 'Несколько групп'
+       END AS NameGroup
+FROM   Catalog_Products cp
+GROUP BY
+       cp.ID,
+       cp.Description,
+       cp.BarCode,
+       cp.DimensionX,
+       cp.DimensionY,
+       cp.DimensionZ,
+       cp.Weight,
+       cp.Multiplicity</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="BarCode" DataSetColumn="BarCode" />
+              <Mapping SourceColumn="DimensionX" DataSetColumn="DimensionX" />
+              <Mapping SourceColumn="DimensionY" DataSetColumn="DimensionY" />
+              <Mapping SourceColumn="DimensionZ" DataSetColumn="DimensionZ" />
+              <Mapping SourceColumn="Multiplicity" DataSetColumn="Multiplicity" />
+              <Mapping SourceColumn="Weight" DataSetColumn="Weight" />
+              <Mapping SourceColumn="NameGroup" DataSetColumn="NameGroup" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_RaftTableAdapter" GeneratorDataComponentClassName="Catalog_RaftTableAdapter" Name="Catalog_Raft" UserDataComponentName="Catalog_RaftTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="WMS.dbo.Catalog_Raft" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Catalog_Raft] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Description] = @Original_Description))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Catalog_Raft] ([Name], [Description]) VALUES (@Name, @Description);
+SELECT ID, Name, Description FROM Catalog_Raft WHERE (ID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Name, Description FROM dbo.Catalog_Raft</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Catalog_Raft] SET [Name] = @Name, [Description] = @Description WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Description] = @Original_Description));
+SELECT ID, Name, Description FROM Catalog_Raft WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="WMS.dbo.Catalog_Raft" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_RotationsProductTableAdapter" GeneratorDataComponentClassName="Catalog_RotationsProductTableAdapter" Name="Catalog_RotationsProduct" UserDataComponentName="Catalog_RotationsProductTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="WMS.dbo.Catalog_RotationsProduct" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Catalog_RotationsProduct] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([MinQty] = @Original_MinQty) AND ([MaxQty] = @Original_MaxQty))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_MinQty" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MinQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_MaxQty" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MaxQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Catalog_RotationsProduct] ([Name], [MinQty], [MaxQty]) VALUES (@Name, @MinQty, @MaxQty);
+SELECT ID, Name, MinQty, MaxQty FROM Catalog_RotationsProduct WHERE (ID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@MinQty" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MinQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@MaxQty" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MaxQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Name, MinQty, MaxQty FROM dbo.Catalog_RotationsProduct</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Catalog_RotationsProduct] SET [Name] = @Name, [MinQty] = @MinQty, [MaxQty] = @MaxQty WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([MinQty] = @Original_MinQty) AND ([MaxQty] = @Original_MaxQty));
+SELECT ID, Name, MinQty, MaxQty FROM Catalog_RotationsProduct WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@MinQty" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MinQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@MaxQty" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MaxQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_MinQty" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MinQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_MaxQty" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MaxQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="WMS.dbo.Catalog_RotationsProduct" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="MinQty" DataSetColumn="MinQty" />
+              <Mapping SourceColumn="MaxQty" DataSetColumn="MaxQty" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_ShelfsTableAdapter" GeneratorDataComponentClassName="Catalog_ShelfsTableAdapter" Name="Catalog_Shelfs" UserDataComponentName="Catalog_ShelfsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Catalog_Shelfs] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Description] = @Original_Description) AND ([Height] = @Original_Height) AND ([Deph] = @Original_Deph) AND ([ID_TypeOfRotation] = @Original_ID_TypeOfRotation))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Height" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Height" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Deph" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Deph" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID_TypeOfRotation" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID_TypeOfRotation" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Catalog_Shelfs] ([Name], [Description], [Height], [Deph], [ID_TypeOfRotation]) VALUES (@Name, @Description, @Height, @Deph, @ID_TypeOfRotation);
+SELECT ID, Name, Description, Height, Deph, ID_TypeOfRotation FROM Catalog_Shelfs WHERE (ID = SCOPE_IDENTITY()) AND (ID_TypeOfRotation = @ID_TypeOfRotation)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Height" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Height" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Deph" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Deph" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID_TypeOfRotation" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID_TypeOfRotation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT     Catalog_Shelfs.ID, Catalog_Shelfs.Name, Catalog_Shelfs.Description, Catalog_Shelfs.Height, Catalog_Shelfs.Deph, 
+                      Catalog_RotationsProduct.Name AS TypeOfRotation
+FROM         Catalog_Shelfs INNER JOIN
+                      Catalog_RotationsProduct ON Catalog_Shelfs.ID_TypeOfRotation = Catalog_RotationsProduct.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Catalog_Shelfs] SET [Name] = @Name, [Description] = @Description, [Height] = @Height, [Deph] = @Deph, [ID_TypeOfRotation] = @ID_TypeOfRotation WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Description] = @Original_Description) AND ([Height] = @Original_Height) AND ([Deph] = @Original_Deph) AND ([ID_TypeOfRotation] = @Original_ID_TypeOfRotation));
+SELECT ID, Name, Description, Height, Deph, ID_TypeOfRotation FROM Catalog_Shelfs WHERE (ID = @ID) AND (ID_TypeOfRotation = @ID_TypeOfRotation)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Height" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Height" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Deph" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Deph" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ID_TypeOfRotation" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID_TypeOfRotation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Height" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Height" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Deph" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Deph" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID_TypeOfRotation" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID_TypeOfRotation" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="Height" DataSetColumn="Height" />
+              <Mapping SourceColumn="Deph" DataSetColumn="Deph" />
+              <Mapping SourceColumn="TypeOfRotation" DataSetColumn="TypeOfRotation" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_ShelfSpacesTableAdapter" GeneratorDataComponentClassName="Catalog_ShelfSpacesTableAdapter" Name="Catalog_ShelfSpaces" UserDataComponentName="Catalog_ShelfSpacesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="WMS.dbo.Catalog_ShelfSpaces" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Catalog_ShelfSpaces] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Description] = @Original_Description))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Catalog_ShelfSpaces] ([Name], [Description]) VALUES (@Name, @Description);
+SELECT ID, Name, Description FROM Catalog_ShelfSpaces WHERE (ID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Name, Description FROM dbo.Catalog_ShelfSpaces</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Catalog_ShelfSpaces] SET [Name] = @Name, [Description] = @Description WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Description] = @Original_Description));
+SELECT ID, Name, Description FROM Catalog_ShelfSpaces WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="WMS.dbo.Catalog_ShelfSpaces" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_StreetsTableAdapter" GeneratorDataComponentClassName="Catalog_StreetsTableAdapter" Name="Catalog_Streets" UserDataComponentName="Catalog_StreetsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     Catalog_Streets.ID, Catalog_Streets.Name, Catalog_Streets.Description, Catalog_Zones.Name AS ZonaName, 
+                      Catalog_Zones.Description AS ZonaDescription, Catalog_Streets.ID_Zona
+FROM         Catalog_Streets INNER JOIN
+                      Catalog_Zones ON Catalog_Streets.ID_Zona = Catalog_Zones.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="ZonaName" DataSetColumn="ZonaName" />
+              <Mapping SourceColumn="ZonaDescription" DataSetColumn="ZonaDescription" />
+              <Mapping SourceColumn="ID_Zona" DataSetColumn="ID_Zona" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_UnitsTableAdapter" GeneratorDataComponentClassName="Catalog_UnitsTableAdapter" Name="Catalog_Units" UserDataComponentName="Catalog_UnitsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="WMS.dbo.Catalog_Units" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Catalog_Units] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([SizeOfUnit] = @Original_SizeOfUnit) AND ([DistanceBetweenUnits] = @Original_DistanceBetweenUnits))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_SizeOfUnit" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SizeOfUnit" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_DistanceBetweenUnits" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="DistanceBetweenUnits" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Catalog_Units] ([Name], [SizeOfUnit], [DistanceBetweenUnits]) VALUES (@Name, @SizeOfUnit, @DistanceBetweenUnits);
+SELECT ID, Name, SizeOfUnit, DistanceBetweenUnits FROM Catalog_Units WHERE (ID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@SizeOfUnit" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SizeOfUnit" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@DistanceBetweenUnits" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="DistanceBetweenUnits" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Name, SizeOfUnit, DistanceBetweenUnits FROM dbo.Catalog_Units</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Catalog_Units] SET [Name] = @Name, [SizeOfUnit] = @SizeOfUnit, [DistanceBetweenUnits] = @DistanceBetweenUnits WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([SizeOfUnit] = @Original_SizeOfUnit) AND ([DistanceBetweenUnits] = @Original_DistanceBetweenUnits));
+SELECT ID, Name, SizeOfUnit, DistanceBetweenUnits FROM Catalog_Units WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@SizeOfUnit" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SizeOfUnit" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@DistanceBetweenUnits" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="DistanceBetweenUnits" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_SizeOfUnit" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SizeOfUnit" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_DistanceBetweenUnits" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="DistanceBetweenUnits" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="WMS.dbo.Catalog_Units" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="SizeOfUnit" DataSetColumn="SizeOfUnit" />
+              <Mapping SourceColumn="DistanceBetweenUnits" DataSetColumn="DistanceBetweenUnits" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_WarehousesTableAdapter" GeneratorDataComponentClassName="Catalog_WarehousesTableAdapter" Name="Catalog_Warehouses" UserDataComponentName="Catalog_WarehousesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     Catalog_Warehouses.ID, Catalog_Warehouses.Name, Catalog_Warehouses.Description, 
+                      Catalog_TypeOfDistributionWarehouses.Name AS NameTypeOfDistribution, Catalog_Warehouses.TypeOfDistribution AS IdTypeOfDistribution
+FROM         Catalog_Warehouses INNER JOIN
+                      Catalog_TypeOfDistributionWarehouses ON Catalog_Warehouses.TypeOfDistribution = Catalog_TypeOfDistributionWarehouses.ID
+ORDER BY Catalog_Warehouses.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="NameTypeOfDistribution" DataSetColumn="NameTypeOfDistribution" />
+              <Mapping SourceColumn="IdTypeOfDistribution" DataSetColumn="IdTypeOfDistribution" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Parameters_GlabalTableAdapter" GeneratorDataComponentClassName="Parameters_GlabalTableAdapter" Name="Parameters_Glabal" UserDataComponentName="Parameters_GlabalTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="WMS.dbo.Parameters_Glabal" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Parameters_Glabal] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Value] = @Original_Value))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Value" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Value" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Parameters_Glabal] ([Name], [Value]) VALUES (@Name, @Value);
+SELECT ID, Name, Value FROM Parameters_Glabal WHERE (ID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Value" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Value" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Name, Value FROM dbo.Parameters_Glabal</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Parameters_Glabal] SET [Name] = @Name, [Value] = @Value WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Value] = @Original_Value));
+SELECT ID, Name, Value FROM Parameters_Glabal WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Value" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Value" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Value" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Value" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="WMS.dbo.Parameters_Glabal" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Value" DataSetColumn="Value" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_TypeOfRestsTableAdapter" GeneratorDataComponentClassName="Catalog_TypeOfRestsTableAdapter" Name="Catalog_TypeOfRests" UserDataComponentName="Catalog_TypeOfRestsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="WMS.dbo.Catalog_TypeOfRests" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Catalog_TypeOfRests] WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Catalog_TypeOfRests] ([Name]) VALUES (@Name);
+SELECT ID, Name FROM Catalog_TypeOfRests WHERE (ID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     ID, Name
+FROM         Catalog_TypeOfRests</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Catalog_TypeOfRests] SET [Name] = @Name WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)));
+SELECT ID, Name FROM Catalog_TypeOfRests WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Name" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="WMS.dbo.Catalog_TypeOfRests" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName=" Catalog_MultiplicityProductsTableAdapter" GeneratorDataComponentClassName="_Catalog_MultiplicityProductsTableAdapter" Name=" Catalog_MultiplicityProducts" UserDataComponentName=" Catalog_MultiplicityProductsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     Catalog_MultiplicityProducts.ID_Product, Catalog_Products.Description, Catalog_Products.BarCode, Catalog_MultiplicityProducts.Multiplicity
+FROM         Catalog_MultiplicityProducts INNER JOIN
+                      Catalog_Products ON Catalog_MultiplicityProducts.ID_Product = Catalog_Products.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID_Product" DataSetColumn="ID_Product" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="BarCode" DataSetColumn="BarCode" />
+              <Mapping SourceColumn="Multiplicity" DataSetColumn="Multiplicity" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_TypeOfDistributionWarehousesTableAdapter" GeneratorDataComponentClassName="Catalog_TypeOfDistributionWarehousesTableAdapter" Name="Catalog_TypeOfDistributionWarehouses" UserDataComponentName="Catalog_TypeOfDistributionWarehousesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Catalog_TypeOfDistributionWarehouses] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     ID, Name
+FROM         Catalog_TypeOfDistributionWarehouses</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Catalog_TypeOfDistributionWarehouses] SET [Name] = @Name WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name));
+SELECT ID, Name FROM Catalog_TypeOfDistributionWarehouses WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="WMS.dbo.Catalog_TypeOfDistributionWarehouses" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_ZonesTableAdapter" GeneratorDataComponentClassName="Catalog_ZonesTableAdapter" Name="Catalog_Zones" UserDataComponentName="Catalog_ZonesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Catalog_Zones] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Description] = @Original_Description))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Catalog_Zones] ([Name], [Description]) VALUES (@Name, @Description);
+SELECT ID, Name, Description FROM Catalog_Zones WHERE (ID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     ID, Name, Description
+FROM         Catalog_Zones</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Catalog_Zones] SET [Name] = @Name, [Description] = @Description WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Description] = @Original_Description));
+SELECT ID, Name, Description FROM Catalog_Zones WHERE (ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="WMS.dbo.Catalog_Zones" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_ResponsibleForTheZoneTableAdapter" GeneratorDataComponentClassName="Catalog_ResponsibleForTheZoneTableAdapter" Name="Catalog_ResponsibleForTheZone" UserDataComponentName="Catalog_ResponsibleForTheZoneTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     Catalog_ResponsibleForTheZone.ID, Catalog_ResponsibleForTheZone.Name, Catalog_Zones.Name AS NameZone, Catalog_Zones.Description, 
+                      Catalog_ResponsibleForTheZone.ID_Zone
+FROM         Catalog_ResponsibleForTheZone INNER JOIN
+                      Catalog_Zones ON Catalog_ResponsibleForTheZone.ID_Zone = Catalog_Zones.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="NameZone" DataSetColumn="NameZone" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="ID_Zone" DataSetColumn="ID_Zone" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_GroupTableAdapter" GeneratorDataComponentClassName="Catalog_GroupTableAdapter" Name="Catalog_Group" UserDataComponentName="Catalog_GroupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     Catalog_Groups.ID, Catalog_Groups.Zone_ID, Catalog_Groups.Warehouse_ID, Catalog_Groups.NameGroup, Catalog_Groups.Descrription as DescrriptionGroup, Catalog_Zones.Name as NameZone, 
+                      Catalog_Zones.Description as DescrriptionZone
+FROM         Catalog_Groups INNER JOIN
+                      Catalog_Zones ON Catalog_Groups.Zone_ID = Catalog_Zones.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Zone_ID" DataSetColumn="Zone_ID" />
+              <Mapping SourceColumn="NameGroup" DataSetColumn="NameGroup" />
+              <Mapping SourceColumn="DescrriptionGroup" DataSetColumn="DescrriptionGroup" />
+              <Mapping SourceColumn="NameZone" DataSetColumn="NameZone" />
+              <Mapping SourceColumn="DescrriptionZone" DataSetColumn="DescrriptionZone" />
+              <Mapping SourceColumn="Warehouse_ID" DataSetColumn="Warehouse_ID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Catalog_RotationsProductForGroupTableAdapter" GeneratorDataComponentClassName="Catalog_RotationsProductForGroupTableAdapter" Name="Catalog_RotationsProductForGroup" UserDataComponentName="Catalog_RotationsProductForGroupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WmsDbConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Catalog_RotationsProduct] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Catalog_RotationsProduct] ([Name]) VALUES (@Name);
+SELECT crp.ID, crp.Name, ISNULL(cgrp.MinQty, 0) AS MinQty, ISNULL(cgrp.MaxQty, 0) AS MaxQty FROM Catalog_RotationsProduct AS crp LEFT OUTER JOIN Catalog_GroupRotationsProduct AS cgrp ON cgrp.ID_Group = @IdGroup AND cgrp.ID_TypeOfRotations = crp.ID WHERE (crp.ID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="IdGroup" ColumnName="ID_Group" DataSourceName="WMS.dbo.Catalog_GroupRotationsProduct" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@IdGroup" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID_Group" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT crp.ID, crp.Name, ISNULL(cgrp.MinQty, 0) AS MinQty, ISNULL(cgrp.MaxQty, 0) AS MaxQty 
+FROM Catalog_RotationsProduct crp
+	LEFT JOIN Catalog_GroupRotationsProduct cgrp ON cgrp.ID_Group = @IdGroup AND cgrp.ID_TypeOfRotations = crp.ID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="IdGroup" ColumnName="ID_Group" DataSourceName="WMS.dbo.Catalog_GroupRotationsProduct" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@IdGroup" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID_Group" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Catalog_RotationsProduct] SET [Name] = @Name WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name));
+SELECT crp.ID, crp.Name, ISNULL(cgrp.MinQty, 0) AS MinQty, ISNULL(cgrp.MaxQty, 0) AS MaxQty FROM Catalog_RotationsProduct AS crp LEFT OUTER JOIN Catalog_GroupRotationsProduct AS cgrp ON cgrp.ID_Group = @IdGroup AND cgrp.ID_TypeOfRotations = crp.ID WHERE (crp.ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="IdGroup" ColumnName="ID_Group" DataSourceName="WMS.dbo.Catalog_GroupRotationsProduct" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@IdGroup" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID_Group" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="WMS.dbo.Catalog_RotationsProduct" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="MinQty" DataSetColumn="MinQty" />
+              <Mapping SourceColumn="MaxQty" DataSetColumn="MaxQty" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="WMSDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="WMSDataSet" msprop:Generator_UserDSName="WMSDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Catalog_Products" msprop:Generator_TableClassName="Catalog_ProductsDataTable" msprop:Generator_TableVarName="tableCatalog_Products" msprop:Generator_TablePropName="Catalog_Products" msprop:Generator_RowDeletingName="Catalog_ProductsRowDeleting" msprop:Generator_UserTableName="Catalog_Products" msprop:Generator_RowChangingName="Catalog_ProductsRowChanging" msprop:Generator_RowEvHandlerName="Catalog_ProductsRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_ProductsRowDeleted" msprop:Generator_RowEvArgName="Catalog_ProductsRowChangeEvent" msprop:Generator_RowChangedName="Catalog_ProductsRowChanged" msprop:Generator_RowClassName="Catalog_ProductsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BarCode" msprop:Generator_ColumnVarNameInTable="columnBarCode" msprop:Generator_ColumnPropNameInRow="BarCode" msprop:Generator_ColumnPropNameInTable="BarCodeColumn" msprop:Generator_UserColumnName="BarCode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DimensionX" msprop:Generator_ColumnVarNameInTable="columnDimensionX" msprop:Generator_ColumnPropNameInRow="DimensionX" msprop:Generator_ColumnPropNameInTable="DimensionXColumn" msprop:Generator_UserColumnName="DimensionX" type="xs:decimal" />
+              <xs:element name="DimensionY" msprop:Generator_ColumnVarNameInTable="columnDimensionY" msprop:Generator_ColumnPropNameInRow="DimensionY" msprop:Generator_ColumnPropNameInTable="DimensionYColumn" msprop:Generator_UserColumnName="DimensionY" type="xs:decimal" />
+              <xs:element name="DimensionZ" msprop:Generator_ColumnVarNameInTable="columnDimensionZ" msprop:Generator_ColumnPropNameInRow="DimensionZ" msprop:Generator_ColumnPropNameInTable="DimensionZColumn" msprop:Generator_UserColumnName="DimensionZ" type="xs:decimal" />
+              <xs:element name="Multiplicity" msprop:Generator_ColumnVarNameInTable="columnMultiplicity" msprop:Generator_ColumnPropNameInRow="Multiplicity" msprop:Generator_ColumnPropNameInTable="MultiplicityColumn" msprop:Generator_UserColumnName="Multiplicity" type="xs:long" />
+              <xs:element name="Weight" msprop:Generator_ColumnVarNameInTable="columnWeight" msprop:Generator_ColumnPropNameInRow="Weight" msprop:Generator_ColumnPropNameInTable="WeightColumn" msprop:Generator_UserColumnName="Weight" type="xs:decimal" />
+              <xs:element name="NameGroup" msprop:Generator_ColumnVarNameInTable="columnNameGroup" msprop:Generator_ColumnPropNameInRow="NameGroup" msprop:Generator_ColumnPropNameInTable="NameGroupColumn" msprop:Generator_UserColumnName="NameGroup" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_Raft" msprop:Generator_TableClassName="Catalog_RaftDataTable" msprop:Generator_TableVarName="tableCatalog_Raft" msprop:Generator_TablePropName="Catalog_Raft" msprop:Generator_RowDeletingName="Catalog_RaftRowDeleting" msprop:Generator_UserTableName="Catalog_Raft" msprop:Generator_RowChangingName="Catalog_RaftRowChanging" msprop:Generator_RowEvHandlerName="Catalog_RaftRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_RaftRowDeleted" msprop:Generator_RowEvArgName="Catalog_RaftRowChangeEvent" msprop:Generator_RowChangedName="Catalog_RaftRowChanged" msprop:Generator_RowClassName="Catalog_RaftRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_RotationsProduct" msprop:Generator_TableClassName="Catalog_RotationsProductDataTable" msprop:Generator_TableVarName="tableCatalog_RotationsProduct" msprop:Generator_TablePropName="Catalog_RotationsProduct" msprop:Generator_RowDeletingName="Catalog_RotationsProductRowDeleting" msprop:Generator_UserTableName="Catalog_RotationsProduct" msprop:Generator_RowChangingName="Catalog_RotationsProductRowChanging" msprop:Generator_RowEvHandlerName="Catalog_RotationsProductRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_RotationsProductRowDeleted" msprop:Generator_RowEvArgName="Catalog_RotationsProductRowChangeEvent" msprop:Generator_RowChangedName="Catalog_RotationsProductRowChanged" msprop:Generator_RowClassName="Catalog_RotationsProductRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MinQty" msprop:Generator_ColumnVarNameInTable="columnMinQty" msprop:Generator_ColumnPropNameInRow="MinQty" msprop:Generator_ColumnPropNameInTable="MinQtyColumn" msprop:Generator_UserColumnName="MinQty" type="xs:decimal" />
+              <xs:element name="MaxQty" msprop:Generator_ColumnVarNameInTable="columnMaxQty" msprop:Generator_ColumnPropNameInRow="MaxQty" msprop:Generator_ColumnPropNameInTable="MaxQtyColumn" msprop:Generator_UserColumnName="MaxQty" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_Shelfs" msprop:Generator_TableClassName="Catalog_ShelfsDataTable" msprop:Generator_TableVarName="tableCatalog_Shelfs" msprop:Generator_TablePropName="Catalog_Shelfs" msprop:Generator_RowDeletingName="Catalog_ShelfsRowDeleting" msprop:Generator_UserTableName="Catalog_Shelfs" msprop:Generator_RowChangingName="Catalog_ShelfsRowChanging" msprop:Generator_RowEvHandlerName="Catalog_ShelfsRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_ShelfsRowDeleted" msprop:Generator_RowEvArgName="Catalog_ShelfsRowChangeEvent" msprop:Generator_RowChangedName="Catalog_ShelfsRowChanged" msprop:Generator_RowClassName="Catalog_ShelfsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Height" msprop:Generator_ColumnVarNameInTable="columnHeight" msprop:Generator_ColumnPropNameInRow="Height" msprop:Generator_ColumnPropNameInTable="HeightColumn" msprop:Generator_UserColumnName="Height" type="xs:decimal" />
+              <xs:element name="Deph" msprop:Generator_ColumnVarNameInTable="columnDeph" msprop:Generator_ColumnPropNameInRow="Deph" msprop:Generator_ColumnPropNameInTable="DephColumn" msprop:Generator_UserColumnName="Deph" type="xs:decimal" />
+              <xs:element name="TypeOfRotation" msprop:Generator_ColumnVarNameInTable="columnTypeOfRotation" msprop:Generator_ColumnPropNameInRow="TypeOfRotation" msprop:Generator_ColumnPropNameInTable="TypeOfRotationColumn" msprop:Generator_UserColumnName="TypeOfRotation">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_ShelfSpaces" msprop:Generator_TableClassName="Catalog_ShelfSpacesDataTable" msprop:Generator_TableVarName="tableCatalog_ShelfSpaces" msprop:Generator_TablePropName="Catalog_ShelfSpaces" msprop:Generator_RowDeletingName="Catalog_ShelfSpacesRowDeleting" msprop:Generator_UserTableName="Catalog_ShelfSpaces" msprop:Generator_RowChangingName="Catalog_ShelfSpacesRowChanging" msprop:Generator_RowEvHandlerName="Catalog_ShelfSpacesRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_ShelfSpacesRowDeleted" msprop:Generator_RowEvArgName="Catalog_ShelfSpacesRowChangeEvent" msprop:Generator_RowChangedName="Catalog_ShelfSpacesRowChanged" msprop:Generator_RowClassName="Catalog_ShelfSpacesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_Streets" msprop:Generator_TableClassName="Catalog_StreetsDataTable" msprop:Generator_TableVarName="tableCatalog_Streets" msprop:Generator_TablePropName="Catalog_Streets" msprop:Generator_RowDeletingName="Catalog_StreetsRowDeleting" msprop:Generator_UserTableName="Catalog_Streets" msprop:Generator_RowChangingName="Catalog_StreetsRowChanging" msprop:Generator_RowEvHandlerName="Catalog_StreetsRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_StreetsRowDeleted" msprop:Generator_RowEvArgName="Catalog_StreetsRowChangeEvent" msprop:Generator_RowChangedName="Catalog_StreetsRowChanged" msprop:Generator_RowClassName="Catalog_StreetsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZonaName" msprop:Generator_ColumnVarNameInTable="columnZonaName" msprop:Generator_ColumnPropNameInRow="ZonaName" msprop:Generator_ColumnPropNameInTable="ZonaNameColumn" msprop:Generator_UserColumnName="ZonaName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZonaDescription" msprop:Generator_ColumnVarNameInTable="columnZonaDescription" msprop:Generator_ColumnPropNameInRow="ZonaDescription" msprop:Generator_ColumnPropNameInTable="ZonaDescriptionColumn" msprop:Generator_UserColumnName="ZonaDescription">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_Zona" msprop:Generator_ColumnVarNameInTable="columnID_Zona" msprop:Generator_ColumnPropNameInRow="ID_Zona" msprop:Generator_ColumnPropNameInTable="ID_ZonaColumn" msprop:Generator_UserColumnName="ID_Zona" type="xs:long" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_Units" msprop:Generator_TableClassName="Catalog_UnitsDataTable" msprop:Generator_TableVarName="tableCatalog_Units" msprop:Generator_TablePropName="Catalog_Units" msprop:Generator_RowDeletingName="Catalog_UnitsRowDeleting" msprop:Generator_UserTableName="Catalog_Units" msprop:Generator_RowChangingName="Catalog_UnitsRowChanging" msprop:Generator_RowEvHandlerName="Catalog_UnitsRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_UnitsRowDeleted" msprop:Generator_RowEvArgName="Catalog_UnitsRowChangeEvent" msprop:Generator_RowChangedName="Catalog_UnitsRowChanged" msprop:Generator_RowClassName="Catalog_UnitsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SizeOfUnit" msprop:Generator_ColumnVarNameInTable="columnSizeOfUnit" msprop:Generator_ColumnPropNameInRow="SizeOfUnit" msprop:Generator_ColumnPropNameInTable="SizeOfUnitColumn" msprop:Generator_UserColumnName="SizeOfUnit" type="xs:decimal" />
+              <xs:element name="DistanceBetweenUnits" msprop:Generator_ColumnVarNameInTable="columnDistanceBetweenUnits" msprop:Generator_ColumnPropNameInRow="DistanceBetweenUnits" msprop:Generator_ColumnPropNameInTable="DistanceBetweenUnitsColumn" msprop:Generator_UserColumnName="DistanceBetweenUnits" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_Warehouses" msprop:Generator_TableClassName="Catalog_WarehousesDataTable" msprop:Generator_TableVarName="tableCatalog_Warehouses" msprop:Generator_TablePropName="Catalog_Warehouses" msprop:Generator_RowDeletingName="Catalog_WarehousesRowDeleting" msprop:Generator_UserTableName="Catalog_Warehouses" msprop:Generator_RowChangingName="Catalog_WarehousesRowChanging" msprop:Generator_RowEvHandlerName="Catalog_WarehousesRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_WarehousesRowDeleted" msprop:Generator_RowEvArgName="Catalog_WarehousesRowChangeEvent" msprop:Generator_RowChangedName="Catalog_WarehousesRowChanged" msprop:Generator_RowClassName="Catalog_WarehousesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NameTypeOfDistribution" msprop:Generator_ColumnVarNameInTable="columnNameTypeOfDistribution" msprop:Generator_ColumnPropNameInRow="NameTypeOfDistribution" msprop:Generator_ColumnPropNameInTable="NameTypeOfDistributionColumn" msprop:Generator_UserColumnName="NameTypeOfDistribution">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdTypeOfDistribution" msprop:Generator_ColumnVarNameInTable="columnIdTypeOfDistribution" msprop:Generator_ColumnPropNameInRow="IdTypeOfDistribution" msprop:Generator_ColumnPropNameInTable="IdTypeOfDistributionColumn" msprop:Generator_UserColumnName="IdTypeOfDistribution" type="xs:long" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Parameters_Glabal" msprop:Generator_TableClassName="Parameters_GlabalDataTable" msprop:Generator_TableVarName="tableParameters_Glabal" msprop:Generator_TablePropName="Parameters_Glabal" msprop:Generator_RowDeletingName="Parameters_GlabalRowDeleting" msprop:Generator_UserTableName="Parameters_Glabal" msprop:Generator_RowChangingName="Parameters_GlabalRowChanging" msprop:Generator_RowEvHandlerName="Parameters_GlabalRowChangeEventHandler" msprop:Generator_RowDeletedName="Parameters_GlabalRowDeleted" msprop:Generator_RowEvArgName="Parameters_GlabalRowChangeEvent" msprop:Generator_RowChangedName="Parameters_GlabalRowChanged" msprop:Generator_RowClassName="Parameters_GlabalRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_UserColumnName="Value">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_TypeOfRests" msprop:Generator_TableClassName="Catalog_TypeOfRestsDataTable" msprop:Generator_TableVarName="tableCatalog_TypeOfRests" msprop:Generator_TablePropName="Catalog_TypeOfRests" msprop:Generator_RowDeletingName="Catalog_TypeOfRestsRowDeleting" msprop:Generator_UserTableName="Catalog_TypeOfRests" msprop:Generator_RowChangingName="Catalog_TypeOfRestsRowChanging" msprop:Generator_RowEvHandlerName="Catalog_TypeOfRestsRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_TypeOfRestsRowDeleted" msprop:Generator_RowEvArgName="Catalog_TypeOfRestsRowChangeEvent" msprop:Generator_RowChangedName="Catalog_TypeOfRestsRowChanged" msprop:Generator_RowClassName="Catalog_TypeOfRestsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="_x0020_Catalog_MultiplicityProducts" msprop:Generator_TableClassName="_Catalog_MultiplicityProductsDataTable" msprop:Generator_TableVarName="table_Catalog_MultiplicityProducts" msprop:Generator_TablePropName="_Catalog_MultiplicityProducts" msprop:Generator_RowDeletingName="_Catalog_MultiplicityProductsRowDeleting" msprop:Generator_UserTableName=" Catalog_MultiplicityProducts" msprop:Generator_RowChangingName="_Catalog_MultiplicityProductsRowChanging" msprop:Generator_RowEvHandlerName="_Catalog_MultiplicityProductsRowChangeEventHandler" msprop:Generator_RowDeletedName="_Catalog_MultiplicityProductsRowDeleted" msprop:Generator_RowEvArgName="_Catalog_MultiplicityProductsRowChangeEvent" msprop:Generator_RowChangedName="_Catalog_MultiplicityProductsRowChanged" msprop:Generator_RowClassName="_Catalog_MultiplicityProductsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Product" msprop:Generator_ColumnVarNameInTable="columnID_Product" msprop:Generator_ColumnPropNameInRow="ID_Product" msprop:Generator_ColumnPropNameInTable="ID_ProductColumn" msprop:Generator_UserColumnName="ID_Product" type="xs:long" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BarCode" msprop:Generator_ColumnVarNameInTable="columnBarCode" msprop:Generator_ColumnPropNameInRow="BarCode" msprop:Generator_ColumnPropNameInTable="BarCodeColumn" msprop:Generator_UserColumnName="BarCode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Multiplicity" msprop:Generator_ColumnVarNameInTable="columnMultiplicity" msprop:Generator_ColumnPropNameInRow="Multiplicity" msprop:Generator_ColumnPropNameInTable="MultiplicityColumn" msprop:Generator_UserColumnName="Multiplicity" type="xs:long" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_TypeOfDistributionWarehouses" msprop:Generator_TableClassName="Catalog_TypeOfDistributionWarehousesDataTable" msprop:Generator_TableVarName="tableCatalog_TypeOfDistributionWarehouses" msprop:Generator_TablePropName="Catalog_TypeOfDistributionWarehouses" msprop:Generator_RowDeletingName="Catalog_TypeOfDistributionWarehousesRowDeleting" msprop:Generator_UserTableName="Catalog_TypeOfDistributionWarehouses" msprop:Generator_RowChangingName="Catalog_TypeOfDistributionWarehousesRowChanging" msprop:Generator_RowEvHandlerName="Catalog_TypeOfDistributionWarehousesRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_TypeOfDistributionWarehousesRowDeleted" msprop:Generator_RowEvArgName="Catalog_TypeOfDistributionWarehousesRowChangeEvent" msprop:Generator_RowChangedName="Catalog_TypeOfDistributionWarehousesRowChanged" msprop:Generator_RowClassName="Catalog_TypeOfDistributionWarehousesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_Zones" msprop:Generator_TableClassName="Catalog_ZonesDataTable" msprop:Generator_TableVarName="tableCatalog_Zones" msprop:Generator_TablePropName="Catalog_Zones" msprop:Generator_RowDeletingName="Catalog_ZonesRowDeleting" msprop:Generator_UserTableName="Catalog_Zones" msprop:Generator_RowChangingName="Catalog_ZonesRowChanging" msprop:Generator_RowEvHandlerName="Catalog_ZonesRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_ZonesRowDeleted" msprop:Generator_RowEvArgName="Catalog_ZonesRowChangeEvent" msprop:Generator_RowChangedName="Catalog_ZonesRowChanged" msprop:Generator_RowClassName="Catalog_ZonesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_ResponsibleForTheZone" msprop:Generator_TableClassName="Catalog_ResponsibleForTheZoneDataTable" msprop:Generator_TableVarName="tableCatalog_ResponsibleForTheZone" msprop:Generator_TablePropName="Catalog_ResponsibleForTheZone" msprop:Generator_RowDeletingName="Catalog_ResponsibleForTheZoneRowDeleting" msprop:Generator_UserTableName="Catalog_ResponsibleForTheZone" msprop:Generator_RowChangingName="Catalog_ResponsibleForTheZoneRowChanging" msprop:Generator_RowEvHandlerName="Catalog_ResponsibleForTheZoneRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_ResponsibleForTheZoneRowDeleted" msprop:Generator_RowEvArgName="Catalog_ResponsibleForTheZoneRowChangeEvent" msprop:Generator_RowChangedName="Catalog_ResponsibleForTheZoneRowChanged" msprop:Generator_RowClassName="Catalog_ResponsibleForTheZoneRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NameZone" msprop:Generator_ColumnVarNameInTable="columnNameZone" msprop:Generator_ColumnPropNameInRow="NameZone" msprop:Generator_ColumnPropNameInTable="NameZoneColumn" msprop:Generator_UserColumnName="NameZone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_Zone" msprop:Generator_ColumnVarNameInTable="columnID_Zone" msprop:Generator_ColumnPropNameInRow="ID_Zone" msprop:Generator_ColumnPropNameInTable="ID_ZoneColumn" msprop:Generator_UserColumnName="ID_Zone" type="xs:long" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_Group" msprop:Generator_TableClassName="Catalog_GroupDataTable" msprop:Generator_TableVarName="tableCatalog_Group" msprop:Generator_TablePropName="Catalog_Group" msprop:Generator_RowDeletingName="Catalog_GroupRowDeleting" msprop:Generator_UserTableName="Catalog_Group" msprop:Generator_RowChangingName="Catalog_GroupRowChanging" msprop:Generator_RowEvHandlerName="Catalog_GroupRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_GroupRowDeleted" msprop:Generator_RowEvArgName="Catalog_GroupRowChangeEvent" msprop:Generator_RowChangedName="Catalog_GroupRowChanged" msprop:Generator_RowClassName="Catalog_GroupRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Zone_ID" msprop:Generator_ColumnVarNameInTable="columnZone_ID" msprop:Generator_ColumnPropNameInRow="Zone_ID" msprop:Generator_ColumnPropNameInTable="Zone_IDColumn" msprop:Generator_UserColumnName="Zone_ID" type="xs:long" />
+              <xs:element name="NameGroup" msprop:Generator_ColumnVarNameInTable="columnNameGroup" msprop:Generator_ColumnPropNameInRow="NameGroup" msprop:Generator_ColumnPropNameInTable="NameGroupColumn" msprop:Generator_UserColumnName="NameGroup">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DescrriptionGroup" msprop:Generator_ColumnVarNameInTable="columnDescrriptionGroup" msprop:Generator_ColumnPropNameInRow="DescrriptionGroup" msprop:Generator_ColumnPropNameInTable="DescrriptionGroupColumn" msprop:Generator_UserColumnName="DescrriptionGroup" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NameZone" msprop:Generator_ColumnVarNameInTable="columnNameZone" msprop:Generator_ColumnPropNameInRow="NameZone" msprop:Generator_ColumnPropNameInTable="NameZoneColumn" msprop:Generator_UserColumnName="NameZone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DescrriptionZone" msprop:Generator_ColumnVarNameInTable="columnDescrriptionZone" msprop:Generator_ColumnPropNameInRow="DescrriptionZone" msprop:Generator_ColumnPropNameInTable="DescrriptionZoneColumn" msprop:Generator_UserColumnName="DescrriptionZone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Warehouse_ID" msprop:Generator_ColumnVarNameInTable="columnWarehouse_ID" msprop:Generator_ColumnPropNameInRow="Warehouse_ID" msprop:Generator_ColumnPropNameInTable="Warehouse_IDColumn" msprop:Generator_UserColumnName="Warehouse_ID" type="xs:long" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListStreets" msprop:Generator_TableClassName="ListStreetsDataTable" msprop:Generator_TableVarName="tableListStreets" msprop:Generator_TablePropName="ListStreets" msprop:Generator_RowDeletingName="ListStreetsRowDeleting" msprop:Generator_UserTableName="ListStreets" msprop:Generator_RowChangingName="ListStreetsRowChanging" msprop:Generator_RowEvHandlerName="ListStreetsRowChangeEventHandler" msprop:Generator_RowDeletedName="ListStreetsRowDeleted" msprop:Generator_RowEvArgName="ListStreetsRowChangeEvent" msprop:Generator_RowChangedName="ListStreetsRowChanged" msprop:Generator_RowClassName="ListStreetsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListRafts" msprop:Generator_TableClassName="ListRaftsDataTable" msprop:Generator_TableVarName="tableListRafts" msprop:Generator_TablePropName="ListRafts" msprop:Generator_RowDeletingName="ListRaftsRowDeleting" msprop:Generator_UserTableName="ListRafts" msprop:Generator_RowChangingName="ListRaftsRowChanging" msprop:Generator_RowEvHandlerName="ListRaftsRowChangeEventHandler" msprop:Generator_RowDeletedName="ListRaftsRowDeleted" msprop:Generator_RowEvArgName="ListRaftsRowChangeEvent" msprop:Generator_RowChangedName="ListRaftsRowChanged" msprop:Generator_RowClassName="ListRaftsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Catalog_RotationsProductForGroup" msprop:Generator_TableClassName="Catalog_RotationsProductForGroupDataTable" msprop:Generator_TableVarName="tableCatalog_RotationsProductForGroup" msprop:Generator_TablePropName="Catalog_RotationsProductForGroup" msprop:Generator_RowDeletingName="Catalog_RotationsProductForGroupRowDeleting" msprop:Generator_UserTableName="Catalog_RotationsProductForGroup" msprop:Generator_RowChangingName="Catalog_RotationsProductForGroupRowChanging" msprop:Generator_RowEvHandlerName="Catalog_RotationsProductForGroupRowChangeEventHandler" msprop:Generator_RowDeletedName="Catalog_RotationsProductForGroupRowDeleted" msprop:Generator_RowEvArgName="Catalog_RotationsProductForGroupRowChangeEvent" msprop:Generator_RowChangedName="Catalog_RotationsProductForGroupRowChanged" msprop:Generator_RowClassName="Catalog_RotationsProductForGroupRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MinQty" msprop:Generator_ColumnVarNameInTable="columnMinQty" msprop:Generator_ColumnPropNameInRow="MinQty" msprop:Generator_ColumnPropNameInTable="MinQtyColumn" msprop:Generator_UserColumnName="MinQty" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MaxQty" msprop:Generator_ColumnVarNameInTable="columnMaxQty" msprop:Generator_ColumnPropNameInRow="MaxQty" msprop:Generator_ColumnPropNameInTable="MaxQtyColumn" msprop:Generator_UserColumnName="MaxQty" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_Products" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_Raft_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_Raft" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_RotationsProduct_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_RotationsProduct" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_ShelfSpaces_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_ShelfSpaces" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_Streets_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_Streets" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_Units_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_Units" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_Warehouses_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_Warehouses" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Parameters_Glabal_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Parameters_Glabal" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_TypeOfRests_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_TypeOfRests" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="_x0020_Catalog_MultiplicityProducts_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:_x0020_Catalog_MultiplicityProducts" />
+      <xs:field xpath="mstns:ID_Product" />
+    </xs:unique>
+    <xs:unique name="Catalog_TypeOfDistributionWarehouses_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_TypeOfDistributionWarehouses" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_Zones_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_Zones" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_ResponsibleForTheZone_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_ResponsibleForTheZone" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_Group_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_Group" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Catalog_RotationsProductForGroup_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Catalog_RotationsProductForGroup" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
