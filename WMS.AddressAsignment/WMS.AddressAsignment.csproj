@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58FE2D83-DA7D-4171-AAE7-C9B2663E4122}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WMS.AddressAsignment</RootNamespace>
+    <AssemblyName>WMS.AddressAsignment</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/WMS.AddressAsignment/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.OfficeSkins.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v11.1.Win, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WMS2\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmAddAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddAddress.Designer.cs">
+      <DependentUpon>FrmAddAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddressAsignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddressAsignment.Designer.cs">
+      <DependentUpon>FrmAddressAsignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddressAsignmentOnNonAcceptedDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddressAsignmentOnNonAcceptedDoc.Designer.cs">
+      <DependentUpon>FrmAddressAsignmentOnNonAcceptedDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFindAndAutoAssignmentAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFindAndAutoAssignmentAddress.Designer.cs">
+      <DependentUpon>FrmFindAndAutoAssignmentAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChangeTypeEnterData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChangeTypeEnterData.Designer.cs">
+      <DependentUpon>FrmChangeTypeEnterData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDirGoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDirGoods.Designer.cs">
+      <DependentUpon>FrmDirGoods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEnterQtyForPartOnAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEnterQtyForPartOnAddress.Designer.cs">
+      <DependentUpon>FrmEnterQtyForPartOnAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListNonAcceptedDocs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListNonAcceptedDocs.Designer.cs">
+      <DependentUpon>FrmListNonAcceptedDocs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListProductsOnAddresses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListProductsOnAddresses.Designer.cs">
+      <DependentUpon>FrmListProductsOnAddresses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MobFrmAddressAsignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MobFrmAddressAsignment.Designer.cs">
+      <DependentUpon>MobFrmAddressAsignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartsFromSystemDataSet.cs">
+      <DependentUpon>PartsFromSystemDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PartsFromSystemDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartsFromSystemDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WaitControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WaitControl.Designer.cs">
+      <DependentUpon>WaitControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WMSDataSet.cs">
+      <DependentUpon>WMSDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WMSDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMSDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmAddAddress.resx">
+      <DependentUpon>FrmAddAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddressAsignment.resx">
+      <DependentUpon>FrmAddressAsignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddressAsignmentOnNonAcceptedDoc.resx">
+      <DependentUpon>FrmAddressAsignmentOnNonAcceptedDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFindAndAutoAssignmentAddress.resx">
+      <DependentUpon>FrmFindAndAutoAssignmentAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChangeTypeEnterData.resx">
+      <DependentUpon>FrmChangeTypeEnterData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDirGoods.resx">
+      <DependentUpon>FrmDirGoods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEnterQtyForPartOnAddress.resx">
+      <DependentUpon>FrmEnterQtyForPartOnAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListNonAcceptedDocs.resx">
+      <DependentUpon>FrmListNonAcceptedDocs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListProductsOnAddresses.resx">
+      <DependentUpon>FrmListProductsOnAddresses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MobFrmAddressAsignment.resx">
+      <DependentUpon>MobFrmAddressAsignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="WaitControl.resx">
+      <DependentUpon>WaitControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WMS.DataBaseLayers\WMS.DataBaseLayers.csproj">
+      <Project>{A06A378B-F9DD-424D-8478-06EC6D9E2FD0}</Project>
+      <Name>WMS.DataBaseLayers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.GlobalsKeys\WMS.GlobalsKeys.csproj">
+      <Project>{8C529FB5-D246-45C6-A680-84437F0384D5}</Project>
+      <Name>WMS.GlobalsKeys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMS.Globals\WMS.Globals.csproj">
+      <Project>{0236057E-CEF7-4169-B5D5-FDC6B7B66656}</Project>
+      <Name>WMS.Globals</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PartsFromSystemDataSet.xsc">
+      <DependentUpon>PartsFromSystemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PartsFromSystemDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PartsFromSystemDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PartsFromSystemDataSet.xss">
+      <DependentUpon>PartsFromSystemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WMSDataSet.xsc">
+      <DependentUpon>WMSDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WMSDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WMSDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WMSDataSet.xss">
+      <DependentUpon>WMSDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
